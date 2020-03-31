@@ -1,6 +1,6 @@
 {
-    "default_hs_url": "https://chat.example.com",
-    "default_is_url": "https://vector.im",
+    "default_hs_url": "https://matrix.chey.best",
+    "default_is_url": "https://matrix.chey.best",
     "brand": "Riot",
     "integrations_ui_url": "https://scalar-staging.riot.im/scalar-web/",
     "integrations_rest_url": "https://scalar-staging.riot.im/scalar/api",
