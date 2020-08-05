@@ -1,0 +1,47 @@
+# Use root/example as user/password credentials
+# Use mysqluser and mysql password for installing
+version: '3.1'
+
+networks:
+  piwigo:
+    driver: bridge
+    
+services:
+  db:
+    image: mariadb
+    container_name: mariadb-piwigo
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: sompass
+      MYSQL_DATABASE: piwigo
+      MYSQL_USER: someuser
+      MYSQL_PASSWORD: somepass
+    networks:
+      - piwigo
+    volumes:
+      - volumes_2:/var/lib/mysql
+    
+  piwigo:
+    
+    image: linuxserver/piwigo
+    
+    container_name: piwigo
+    
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Paris
+    
+    networks:
+      - piwigo
+   
+    volumes:
+      - volumes_1:/config
+    
+    ports:
+      - 8081:80
+    
+    restart: unless-stopped
+volumes:
+  volumes_1: {}
+  volumes_2: {}
